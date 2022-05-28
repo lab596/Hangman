@@ -1,8 +1,11 @@
 import random
 print("Welcome to Hangman!")
 print()
-print ("There is two game modes: single word or sentance")
-inp = int(input ("Type '1' for single word or '2' for sentance"))
+print ("There is two game modes: single word or sentance.")
+inp = input ("Type '1' for single word or '2' for sentance.")
+while not(inp.isdigit() and len(inp)==1 and (inp=="1" or inp =="2")):
+  inp = input ("Stop. Please type 1 or 2.")
+inp = int(inp)
 print()
 if inp == 1:
   print("Welcome to word mode.")
@@ -39,6 +42,8 @@ if inp == 1:
       print("Try a diffrent one.")
       print()
       continue
+    if letter.isupper():
+      letter.lower()
     if word.count(letter) > 0:
       num = word.count(letter)
       print("There are "+ str(num)+" " + letter.capitalize() +"(s).")
@@ -75,7 +80,7 @@ elif inp == 2:
   sentence = sentence[0 : len(sentence)-2]
   sentence = sentence.lower()
   #print(sentence)
-  guesses = 6
+  guesses = 3
   gsen = ""
   for i in sentence:
     if i == " ":
@@ -96,7 +101,7 @@ elif inp == 2:
       print()
       continue
     if letter.isdigit():
-      print("Bro what are you doing? I said put a letter")
+      print("Bro what are you doing? I said put a letter.")
       print()
       continue
     if letter in letterss or letter in trys:
@@ -107,7 +112,7 @@ elif inp == 2:
 
     if sentence.count(letter) > 0:
       num = sentence.count(letter)
-      print("There are "+ str(num)+" " + letter.capitalize() +"(s)")
+      print("There are "+ str(num)+" " + letter.capitalize() +"(s).")
       letterss.append(letter)
 
       
